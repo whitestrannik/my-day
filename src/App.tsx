@@ -7,6 +7,8 @@ import AverageMoodGauge from './components/AverageMoodGauge'
 import { getEntriesForDate, saveEntry, getAllEntriesAsList, generateId, getStoredEntries } from './utils/storage'
 import type { MoodEntry, MoodValue, DayEntries } from './types'
 import { MOOD_VALUES } from './types' // For calculating average
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
@@ -15,6 +17,7 @@ function App() {
   const [entriesForSelectedDate, setEntriesForSelectedDate] = useState<MoodEntry[]>([])
   const [allEntries, setAllEntries] = useState<DayEntries>(() => getStoredEntries())
   const [averageMonthlyMood, setAverageMonthlyMood] = useState<MoodValue | null>(null)
+  const [activeStartDate, setActiveStartDate] = useState(new Date())
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -50,9 +53,10 @@ function App() {
     }
   }
 
-  const handleDateSelect = (date: string) => {
-    setSelectedDate(date)
-    setEntriesForSelectedDate(getEntriesForDate(date))
+  const handleDateSelect = (date: Date) => {
+    const isoDate = date.toISOString().split('T')[0]
+    setSelectedDate(isoDate)
+    setEntriesForSelectedDate(getEntriesForDate(isoDate))
   }
 
   const handleOpenMoodForm = () => {
@@ -83,6 +87,14 @@ function App() {
     setIsMoodFormOpen(false) // Close modal/form
   }
 
+  const handleActiveStartDateChange = ({ activeStartDate }: { activeStartDate: Date | null }) => {
+    if (activeStartDate) {
+      setActiveStartDate(activeStartDate)
+      const currentEntriesList = Object.values(allEntries).flat()
+      calculateAverageMood(currentEntriesList, activeStartDate.getMonth() + 1, activeStartDate.getFullYear())
+    }
+  }
+
   return (
     <div className="app-container p-4 max-w-4xl mx-auto font-sans">
       <header className="flex justify-between items-center mb-6">
@@ -101,8 +113,13 @@ function App() {
       </section>
 
       <section className="calendar-section mb-6 bg-white dark:bg-gray-800 p-4 border rounded-lg shadow">
-        {/* CalendarView will be implemented here */}
-        <CalendarView /> 
+        <CalendarView 
+          allEntries={allEntries}
+          onDateSelect={handleDateSelect}
+          selectedDate={selectedDate ? new Date(selectedDate) : null}
+          activeStartDate={activeStartDate}
+          onActiveStartDateChange={handleActiveStartDateChange}
+        /> 
       </section>
 
       <section className="selected-day-mood-display p-4 border rounded-lg shadow bg-white dark:bg-gray-800 min-h-[100px]">

@@ -40,3 +40,79 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Custom Calendar Styling */
+.mood-calendar {
+  border: none; /* Override default border if any */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  font-family: inherit; /* Inherit font from body */
+}
+
+/* Style for navigation buttons (prev, next, month/year view) */
+.mood-calendar .react-calendar__navigation button {
+  color: #3b82f6; /* blue-500 */
+  min-width: 44px;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.375rem; /* rounded-md */
+  font-weight: 600;
+}
+.mood-calendar .react-calendar__navigation button:hover,
+.mood-calendar .react-calendar__navigation button:focus {
+  background-color: #eff6ff; /* blue-50 */
+}
+
+/* Style for day tiles */
+.mood-calendar .react-calendar__tile {
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.5em 0.5em; /* Adjust padding as needed */
+  height: auto; /* Ensure content like mood-dot fits */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1.2; /* Adjust for number and dot */
+}
+
+.mood-calendar .react-calendar__tile abbr {
+  font-size: 0.875rem; /* text-sm */
+  /* The number itself */
+}
+
+/* Style for the mood dot */
+.mood-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-top: 6px; /* Space between number and dot */
+  flex-shrink: 0;
+}
+
+/* Styling for selected day */
+.mood-calendar .react-calendar__tile--active {
+  background: #60a5fa; /* blue-400 */
+  color: white;
+}
+.mood-calendar .react-calendar__tile--active:enabled:hover,
+.mood-calendar .react-calendar__tile--active:enabled:focus {
+  background: #3b82f6; /* blue-500 */
+}
+
+/* Styling for today's tile */
+.mood-calendar .react-calendar__tile--now {
+  background: #dbeafe; /* blue-100 */
+  /* color: #1e40af; */ /* blue-800 if needed for text */
+}
+.mood-calendar .react-calendar__tile--now:enabled:hover,
+.mood-calendar .react-calendar__tile--now:enabled:focus {
+  background: #bfdbfe; /* blue-200 */
+}
+
+/* Remove outline from focused elements within calendar for cleaner look if desired */
+/* .mood-calendar *:focus {
+  outline: none;
+} */
+
+/* Placeholder for elevation/shadow if not handled by Tailwind classes on the component directly */
+/* .elevation-1 {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+} */
