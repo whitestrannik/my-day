@@ -30,15 +30,15 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 - [ ] Ensure `onClose` callback is correctly handled.
 
 ### 2.2 CalendarView Component (`src/components/CalendarView.tsx`)
-- [ ] Choose and integrate a calendar library (e.g., `react-calendar`) or build custom grid.
-- [ ] Display the days of the current month.
-- [ ] Allow navigation to previous/next months.
-- [ ] Fetch all mood entries (`allEntries` from `App.tsx` context or props).
-- [ ] For each day with entries:
-    - [ ] Calculate the average mood for the day.
-    - [ ] Display a color highlight on the day cell based on the calculated average mood (using `MOOD_COLORS`).
-- [ ] Handle click events on calendar days to call `onDateSelect` prop from `App.tsx`.
-- [ ] Style CalendarView using TailwindCSS.
+- [x] Choose and integrate a calendar library (e.g., `react-calendar`) or build custom grid.
+- [x] Display the days of the current month.
+- [x] Allow navigation to previous/next months.
+- [x] Fetch all mood entries (`allEntries` from `App.tsx` context or props).
+- [x] For each day with entries:
+    - [x] Calculate the average mood for the day.
+    - [x] Display a color highlight on the day cell based on the calculated average mood (using `MOOD_COLORS`).
+- [x] Handle click events on calendar days to call `onDateSelect` prop from `App.tsx`.
+- [x] Style CalendarView using TailwindCSS (and custom CSS for `react-calendar` specifics).
 
 ### 2.3 MoodDisplay Component (`src/components/MoodDisplay.tsx`)
 - [ ] Receive `selectedDate` and `entries` (for that date) as props.
