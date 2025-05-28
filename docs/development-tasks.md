@@ -41,15 +41,15 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 - [x] Style CalendarView using TailwindCSS (and custom CSS for `react-calendar` specifics).
 
 ### 2.3 MoodDisplay Component (`src/components/MoodDisplay.tsx`)
-- [ ] Receive `selectedDate` and `entries` (for that date) as props.
-- [ ] If no date is selected, show an appropriate message.
-- [ ] If a date is selected but has no entries, show an appropriate message.
-- [ ] If entries exist for the selected date:
-    - [ ] Display the selected date clearly.
-    - [ ] List each `MoodEntry` for the selected date.
-    - [ ] For each entry, display: mood emoji, mood text (e.g., "Happy"), selected tags, and the note.
-    - [ ] Use `MOOD_EMOJIS` and `MOOD_COLORS` for consistent display.
-- [ ] Style MoodDisplay using TailwindCSS, ensuring it fits the layout from the mockup.
+- [x] Receive `selectedDate` and `entries` (for that date) as props.
+- [x] If no date is selected, show an appropriate message.
+- [x] If a date is selected but has no entries, show an appropriate message.
+- [x] If entries exist for the selected date:
+    - [x] Display the selected date clearly.
+    - [x] List each `MoodEntry` for the selected date.
+    - [x] For each entry, display: mood emoji, mood text (e.g., "Happy"), selected tags, and the note.
+    - [x] Use `MOOD_EMOJIS` and `MOOD_COLORS` for consistent display.
+- [x] Style MoodDisplay using TailwindCSS, ensuring it fits the layout from the mockup.
 
 ### 2.4 AverageMoodGauge Component (`src/components/AverageMoodGauge.tsx`)
 - [ ] Receive `averageMonthlyMood` (calculated in `App.tsx`) as a prop.
