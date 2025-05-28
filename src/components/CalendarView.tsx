@@ -64,13 +64,12 @@ const CalendarView: React.FC<CalendarViewProps> = ({
 
   return (
     <Calendar
-      onChange={handleCalendarChange} // Use the wrapper
+      onChange={handleCalendarChange}
       value={selectedDate}
       activeStartDate={activeStartDate}
       onActiveStartDateChange={onActiveStartDateChange}
       tileContent={tileContent}
-      className="mood-calendar elevation-1 rounded-lg border-transparent shadow-lg" // Added more Tailwind classes
-      // showNeighboringMonth={false} // Example prop
+      className="mood-calendar"
     />
   );
 };

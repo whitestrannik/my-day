@@ -96,42 +96,48 @@ function App() {
   }
 
   return (
-    <div className="app-container p-4 max-w-4xl mx-auto font-sans">
-      <header className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">My day</h1>
-        <button 
-          onClick={handleOpenMoodForm} 
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow hover:shadow-lg transition-all duration-150 ease-in-out"
-        >
-          Add mood
-        </button>
-      </header>
+    // Centered container with a max-width. Mockup is mobile-first, so using a smaller max-width.
+    <div className="app-container min-h-screen flex flex-col items-center py-6 sm:py-10 px-4">
+      <div className="w-full max-w-md">
+        <header className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-gray-700 dark:text-sky-100">My day</h1>
+          <button 
+            onClick={handleOpenMoodForm} 
+            // Adjusted button style to match mockup: lighter blue, softer shadow
+            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75"
+          >
+            Add mood
+          </button>
+        </header>
 
-      <section className="average-mood-section mb-6 p-4 border rounded-lg shadow bg-white dark:bg-gray-800">
-        <h2 className="text-xl mb-2 text-gray-700 dark:text-gray-300">Average mood this month</h2>
-        <AverageMoodGauge averageMood={averageMonthlyMood} />
-      </section>
+        {/* Cards with softer shadows and specific background */}
+        <section className="average-mood-section mb-6 p-4 sm:p-6 rounded-xl shadow-lg bg-white dark:bg-slate-800">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-600 dark:text-slate-300 mb-3 text-left">Average mood this month</h2>
+          <AverageMoodGauge averageMood={averageMonthlyMood} />
+        </section>
 
-      <section className="calendar-section mb-6 bg-white dark:bg-gray-800 p-4 border rounded-lg shadow">
-        <CalendarView 
-          allEntries={allEntries}
-          onDateSelect={handleDateSelect}
-          selectedDate={selectedDate ? new Date(selectedDate) : null}
-          activeStartDate={activeStartDate}
-          onActiveStartDateChange={handleActiveStartDateChange}
-        /> 
-      </section>
+        <section className="calendar-section mb-6 p-0 sm:p-2 rounded-xl shadow-lg bg-white dark:bg-slate-800">
+          {/* CalendarView itself will have padding/margins controlled by its own styles or here */}
+          <CalendarView 
+            allEntries={allEntries}
+            onDateSelect={handleDateSelect}
+            selectedDate={selectedDate ? new Date(selectedDate) : null}
+            activeStartDate={activeStartDate}
+            onActiveStartDateChange={handleActiveStartDateChange}
+          /> 
+        </section>
 
-      <section className="selected-day-mood-display p-4 border rounded-lg shadow bg-white dark:bg-gray-800 min-h-[100px]">
-        <MoodDisplay selectedDate={selectedDate} entries={entriesForSelectedDate} />
-      </section>
+        <section className="selected-day-mood-display p-4 sm:p-6 rounded-xl shadow-lg bg-white dark:bg-slate-800 min-h-[100px]">
+          <MoodDisplay selectedDate={selectedDate} entries={entriesForSelectedDate} />
+        </section>
 
-      <MoodForm 
-        isOpen={isMoodFormOpen} 
-        onClose={handleCloseMoodForm} 
-        onSave={handleSaveMoodEntry} 
-        isMobile={isMobile} 
-      />
+        <MoodForm 
+          isOpen={isMoodFormOpen} 
+          onClose={handleCloseMoodForm} 
+          onSave={handleSaveMoodEntry} 
+          isMobile={isMobile} 
+        />
+      </div>
     </div>
   )
 }

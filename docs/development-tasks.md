@@ -67,8 +67,8 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 
 ## Phase 3: Styling & Polish
 
-- [ ] Review and refine TailwindCSS styling across all components for consistency and responsiveness.
-- [ ] Ensure UI matches the provided mockup as closely as possible.
+- [x] Review and refine TailwindCSS styling across all components for consistency and responsiveness. (Initial pass for main layout and cards completed)
+- [x] Ensure UI matches the provided mockup as closely as possible. (Main layout closer to mockup)
 - [ ] Test on different screen sizes (desktop, tablet, mobile).
 
 ## Phase 4: Optional Features (If time permits / As per PRD)
