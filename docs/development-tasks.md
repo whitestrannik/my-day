@@ -52,12 +52,12 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 - [x] Style MoodDisplay using TailwindCSS, ensuring it fits the layout from the mockup.
 
 ### 2.4 AverageMoodGauge Component (`src/components/AverageMoodGauge.tsx`)
-- [ ] Receive `averageMonthlyMood` (calculated in `App.tsx`) as a prop.
-- [ ] If no mood data, display an appropriate message.
-- [ ] Use Recharts (or chosen library) to implement a gauge/meter visual.
-    - [ ] The gauge should visually represent the `averageMonthlyMood`.
-    - [ ] Use `MOOD_COLORS` to color parts of the gauge or the indicator.
-- [ ] Style the gauge container using TailwindCSS.
+- [x] Receive `averageMonthlyMood` (calculated in `App.tsx`) as a prop.
+- [x] If no mood data, display an appropriate message.
+- [x] Use Recharts (or chosen library) to implement a gauge/meter visual.
+    - [x] The gauge should visually represent the `averageMonthlyMood`.
+    - [x] Use `MOOD_COLORS` to color parts of the gauge or the indicator.
+- [x] Style the gauge container using TailwindCSS.
 
 ### 2.5 App Component Enhancements (`src/App.tsx`)
 - [ ] Refine responsive logic for `MoodForm` (modal vs. page).
