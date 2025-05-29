@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveContainer, PieChart, Pie, Cell, Text } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import type { MoodValue } from '../types';
 import { MOOD_COLORS, MOOD_EMOJIS, MOOD_VALUES } from '../types';
 
@@ -16,38 +16,35 @@ const getMoodText = (moodValue: MoodValue): string => {
 
 const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
   if (averageMood === null) {
-    return <p className="text-center text-gray-500 dark:text-gray-400 py-4">Not enough data for this month's average mood.</p>;
+    return <p className="text-center text-sm text-slate-400 dark:text-slate-500 py-4">No mood data for this month.</p>;
   }
 
-  const moodValue = averageMood; // This is 1-5
-  const totalSegments = 5; // Our mood scale
+  const moodValue = averageMood;
+  const totalSegments = 5;
 
-  // Data for the gauge (semi-circle)
-  // We create segments for the pie chart. One for each mood up to the average, then one for the remainder.
   const data = [
     { name: 'Mood Segment', value: moodValue, color: MOOD_COLORS[moodValue] },
-    { name: 'Remainder', value: totalSegments - moodValue, color: '#e0e0e0' }, // Light gray for the rest
+    { name: 'Remainder', value: totalSegments - moodValue, color: 'rgba(200, 200, 200, 0.5)' },
   ];
 
   const emojiForMood = MOOD_EMOJIS[moodValue];
   const textForMood = getMoodText(moodValue);
 
-  // For a semi-circle gauge, we use startAngle and endAngle
   const startAngle = 180;
   const endAngle = 0;
 
   return (
-    <div className="w-full h-48 md:h-56 flex flex-col items-center justify-center">
-      <ResponsiveContainer width="70%" height="100%">
+    <div className="w-full h-36 sm:h-40 flex flex-col items-center justify-center relative">
+      <ResponsiveContainer width="55%" height="100%">
         <PieChart>
           <Pie
             data={data}
             cx="50%"
-            cy="100%" // Position the center at the bottom for a semi-circle
+            cy="100%"
             startAngle={startAngle}
             endAngle={endAngle}
-            innerRadius="60%" // Creates the doughnut hole
-            outerRadius="100%"
+            innerRadius="60%"
+            outerRadius="95%"
             fill="#8884d8"
             paddingAngle={0}
             dataKey="value"
@@ -57,13 +54,13 @@ const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
-          {/* Custom label for emoji in the center - Recharts positioning can be tricky */}
-          {/* A simpler approach might be to overlay HTML text if this becomes too complex */}
         </PieChart>
       </ResponsiveContainer>
-      <div className="text-center -mt-10 md:-mt-12 z-10">
-        <span className="text-4xl md:text-5xl block">{emojiForMood}</span>
-        <p className="text-md md:text-lg font-semibold text-gray-700 dark:text-gray-200">{textForMood}</p>
+      <div className="absolute bottom-[5%] sm:bottom-[8%] text-center z-10">
+        <span className="text-3xl sm:text-4xl block">{emojiForMood}</span>
+        <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-0.5">
+          {textForMood}
+        </p>
       </div>
     </div>
   );

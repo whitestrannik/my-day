@@ -1,110 +1,172 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* Default Vite styles like .logo, .card, .read-the-docs, #root, @keyframes might be here. */
+/* We are removing them to rely more on Tailwind for overall layout and component styling. */
 
 /* Custom Calendar Styling */
 .mood-calendar {
-  border: none; /* Override default border if any */
-  border-radius: 0.5rem; /* Tailwind's rounded-lg */
-  font-family: inherit; /* Inherit font from body */
+  border: none;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  width: 100%; /* Ensure calendar takes full width of its container */
 }
 
-/* Style for navigation buttons (prev, next, month/year view) */
-.mood-calendar .react-calendar__navigation button {
-  color: #3b82f6; /* blue-500 */
-  min-width: 44px;
-  padding: 0.5rem 0.25rem;
-  border-radius: 0.375rem; /* rounded-md */
-  font-weight: 600;
+.mood-calendar .react-calendar__navigation {
+  display: flex;
+  justify-content: center; /* Center navigation items */
+  align-items: center;
+  margin-bottom: 0.75em; /* Space below navigation */
+  padding: 0.25rem 0;
 }
+
+.mood-calendar .react-calendar__navigation button {
+  color: #475569; /* slate-600 */
+  background: none;
+  border: none;
+  font-size: 1rem; /* text-base */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem; /* rounded-md */
+  font-weight: 600; /* semibold */
+  cursor: pointer;
+}
+
+.dark .mood-calendar .react-calendar__navigation button {
+  color: #cbd5e1; /* slate-300 */
+}
+
 .mood-calendar .react-calendar__navigation button:hover,
 .mood-calendar .react-calendar__navigation button:focus {
-  background-color: #eff6ff; /* blue-50 */
+  background-color: #f1f5f9; /* slate-100 */
 }
 
-/* Style for day tiles */
+.dark .mood-calendar .react-calendar__navigation button:hover,
+.dark .mood-calendar .react-calendar__navigation button:focus {
+  background-color: #334155; /* slate-700 */
+}
+
+/* Month and Year display */
+.mood-calendar .react-calendar__navigation__label {
+  font-weight: 700; /* bold */
+  font-size: 1.125rem; /* text-lg */
+  color: #1e293b; /* slate-800 */
+  flex-grow: 0 !important; /* Override default flex-grow if any */
+  pointer-events: none; /* Not clickable */
+  padding: 0.5rem 0.5rem;
+}
+
+.dark .mood-calendar .react-calendar__navigation__label {
+  color: #e2e8f0; /* slate-200 */
+}
+
+/* Weekday labels */
+.mood-calendar .react-calendar__month-view__weekdays {
+  margin-bottom: 0.25em;
+  text-align: center;
+  font-weight: 600; /* semibold */
+  font-size: 0.75rem; /* text-xs */
+  color: #64748b; /* slate-500 */
+}
+
+.dark .mood-calendar .react-calendar__month-view__weekdays {
+  color: #94a3b8; /* slate-400 */
+}
+
+.mood-calendar .react-calendar__month-view__weekdays abbr {
+  text-decoration: none; /* Remove underline */
+  padding: 0.5em;
+}
+
+/* Day Tiles */
 .mood-calendar .react-calendar__tile {
-  border-radius: 0.375rem; /* rounded-md */
-  padding: 0.5em 0.5em; /* Adjust padding as needed */
-  height: auto; /* Ensure content like mood-dot fits */
+  border-radius: 9999px; /* Make tiles circular for selection highlight */
+  padding: 0.25em;
+  height: 2.75rem; /* Increased height slightly for circular shape */
+  width: 2.75rem;  /* Explicit width for circular shape */
+  max-width: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  line-height: 1.2; /* Adjust for number and dot */
+  justify-content: center; /* Center content (number and dot) */
+  line-height: 1;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  color: #334155; /* slate-700 */
+  position: relative; /* For absolute positioning of mood dot if needed, though flex should work */
 }
 
-.mood-calendar .react-calendar__tile abbr {
-  font-size: 0.875rem; /* text-sm */
-  /* The number itself */
+.dark .mood-calendar .react-calendar__tile {
+  color: #cbd5e1; /* slate-300 */
 }
 
-/* Style for the mood dot */
+.mood-calendar .react-calendar__tile:hover {
+  background-color: #f1f5f9; /* slate-100 */
+}
+
+.dark .mood-calendar .react-calendar__tile:hover {
+  background-color: #3e4c5e; /* Slightly lighter than slate-700 for hover */
+}
+
+.mood-calendar .react-calendar__tile abbr { /* The day number */
+  /* Centered by tile's flex properties */
+}
+
+/* Mood dot - making it smaller and ensuring it's below the number */
 .mood-dot {
-  height: 8px;
-  width: 8px;
+  width: 5px; /* Smaller dot */
+  height: 5px; /* Smaller dot */
   border-radius: 50%;
-  margin-top: 6px; /* Space between number and dot */
+  margin-top: 3px; /* Space between number and dot */
   flex-shrink: 0;
+  /* opacity: 0.8; */ /* Optional: if dots need to be more subtle */
 }
 
-/* Styling for selected day */
+/* Selected day */
 .mood-calendar .react-calendar__tile--active {
-  background: #60a5fa; /* blue-400 */
-  color: white;
+  background: #3b82f6 !important; /* sky-500, !important if other styles override */
+  color: white !important;
 }
-.mood-calendar .react-calendar__tile--active:enabled:hover,
-.mood-calendar .react-calendar__tile--active:enabled:focus {
-  background: #3b82f6; /* blue-500 */
+.mood-calendar .react-calendar__tile--active abbr {
+  color: white !important; /* Ensure number is white */
 }
 
-/* Styling for today's tile */
-.mood-calendar .react-calendar__tile--now {
-  background: #dbeafe; /* blue-100 */
-  /* color: #1e40af; */ /* blue-800 if needed for text */
+/* Ensure mood dot on active tile is also visible or styled if needed */
+.mood-calendar .react-calendar__tile--active .mood-dot {
+  /* Example: make it white or a contrasting color if mood color is too similar to active bg */
+  /* background-color: white !important; */ 
 }
-.mood-calendar .react-calendar__tile--now:enabled:hover,
-.mood-calendar .react-calendar__tile--now:enabled:focus {
-  background: #bfdbfe; /* blue-200 */
+
+.dark .mood-calendar .react-calendar__tile--active {
+  background: #3b82f6 !important; /* sky-500 */
+  color: white !important;
+}
+.dark .mood-calendar .react-calendar__tile--active abbr {
+  color: white !important;
+}
+
+/* Today's tile - ensure it does not override active selection too much */
+.mood-calendar .react-calendar__tile--now {
+  background: transparent; /* Keep it subtle if not selected */
+  font-weight: bold;
+  /* border: 1px solid #9sky-200; */ /* Optional: subtle border for today */
+}
+.mood-calendar .react-calendar__tile--now:not(.react-calendar__tile--active) {
+   /* Styles for today when it's NOT the active selected day */
+   /* color: #2563eb; */ /* Example: sky-600 for the number */
+}
+
+.dark .mood-calendar .react-calendar__tile--now {
+  background: transparent;
+  /* border: 1px solid #0c4a6e; */ /* Optional: subtle border for dark mode */
+}
+.dark .mood-calendar .react-calendar__tile--now:not(.react-calendar__tile--active) {
+   /* color: #7dd3fc; */ /* Example: sky-300 for the number in dark mode */
+}
+
+/* Other month's days (if showNeighboringMonth was true) - currently hidden */
+.mood-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  color: #9ca3af; /* gray-400 */
+}
+.dark .mood-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  color: #6b7280; /* gray-500 */
 }
 
 /* Remove outline from focused elements within calendar for cleaner look if desired */

@@ -19,15 +19,15 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 ## Phase 2: Core Feature Implementation
 
 ### 2.1 MoodForm Component (`src/components/MoodForm.tsx`)
-- [ ] Implement UI for MoodForm based on mockup (emoji selection, tag buttons, note input).
-- [ ] Add state management for form fields within MoodForm.
-- [ ] Implement character limit (120 chars) for the note input.
-- [ ] Style MoodForm using TailwindCSS.
-- [ ] Implement responsive behavior:
-    - [ ] Modal dialog on desktop.
-    - [ ] Full page/view on mobile (this might require routing or advanced conditional rendering in `App.tsx`).
-- [ ] Ensure `onSave` callback prop is correctly called with validated form data.
-- [ ] Ensure `onClose` callback is correctly handled.
+- [x] Implement UI for MoodForm based on mockup (emoji selection, tag buttons, note input).
+- [x] Add state management for form fields within MoodForm.
+- [x] Implement character limit (120 chars) for the note input.
+- [x] Style MoodForm using TailwindCSS.
+- [x] Implement responsive behavior:
+    - [x] Modal dialog on desktop.
+    - [x] Full page/view on mobile (this might require routing or advanced conditional rendering in `App.tsx`).
+- [x] Ensure `onSave` callback prop is correctly called with validated form data.
+- [x] Ensure `onClose` callback is correctly handled.
 
 ### 2.2 CalendarView Component (`src/components/CalendarView.tsx`)
 - [x] Choose and integrate a calendar library (e.g., `react-calendar`) or build custom grid.
@@ -60,23 +60,23 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 - [x] Style the gauge container using TailwindCSS.
 
 ### 2.5 App Component Enhancements (`src/App.tsx`)
-- [ ] Refine responsive logic for `MoodForm` (modal vs. page).
-    - [ ] Consider using a simple routing solution if `MoodForm` becomes a full page on mobile (e.g., `react-router-dom` or manual state-based routing).
-- [ ] Ensure `calculateAverageMood` correctly updates when entries change for the current month.
-- [ ] Pass necessary props (entries, handlers) down to child components correctly.
+- [x] Refine responsive logic for `MoodForm` (modal vs. page).
+    - [x] Consider using a simple routing solution if `MoodForm` becomes a full page on mobile (e.g., `react-router-dom` or manual state-based routing).
+- [x] Ensure `calculateAverageMood` correctly updates when entries change for the current month.
+- [x] Pass necessary props (entries, handlers) down to child components correctly.
 
 ## Phase 3: Styling & Polish
 
 - [x] Review and refine TailwindCSS styling across all components for consistency and responsiveness. (Initial pass for main layout and cards completed)
-- [x] Ensure UI matches the provided mockup as closely as possible. (Main layout closer to mockup)
-- [ ] Test on different screen sizes (desktop, tablet, mobile).
+- [x] Ensure UI matches the provided mockup as closely as possible. (Main layout closer to mockup, Calendar and MoodDisplay improved)
+- [ ] Test on different screen sizes (desktop, tablet, mobile). // Actively in progress, further refinements may be needed.
 
 ## Phase 4: Optional Features (If time permits / As per PRD)
 
 ### 4.1 Theme Toggle (Light/Dark Mode)
 - [ ] Add a UI element (e.g., a button or switch) for toggling the theme.
 - [ ] Implement logic to switch CSS classes on the `body` or root element (e.g., `dark` class).
-- [ ] Use Tailwind's dark mode variants (e.g., `dark:bg-gray-800`).
+- [x] Use Tailwind's dark mode variants (e.g., `dark:bg-gray-800`).
 - [ ] Persist theme preference in `localStorage`.
 - [ ] Ensure the app defaults to system preference for theme as per PRD.
 
@@ -86,8 +86,8 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 - [x] Set up Vitest configuration if not fully done by default Vite template.
 - [x] Write unit tests for utility functions in `src/utils/storage.ts`.
 - [x] Write unit tests for `calculateAverageMood` logic in `App.tsx`.
-- [ ] Write basic integration/component tests for `MoodForm` (e.g., input changes, save callback).
-- [ ] Write basic integration/component tests for `CalendarView` (e.g., date selection).
+- [x] Write basic integration/component tests for `MoodForm` (e.g., input changes, save callback).
+- [x] Write basic integration/component tests for `CalendarView` (e.g., date selection).
 
 ### 5.2 Deployment (GitHub Pages)
 - [ ] Configure Vite's `base` path in `vite.config.ts` for GitHub Pages deployment.

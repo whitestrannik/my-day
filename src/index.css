@@ -1,39 +1,9 @@
-/* Basic reset and body theming */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Light blueish background similar to mockup */
-  background-color: #E0F2FE; /* Tailwind: bg-sky-100 (example, can be adjusted) */
-  color: #1f2937; /* Default text for light mode */
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body.dark {
-  /* Adjust dark mode if needed, mockup is light themed */
-  background-color: #0B1120; /* Darker blue/gray */
-  color: #f3f4f6;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Tailwind base and components are usually handled by Tailwind itself if set up correctly */
-/* You might not need much in index.css if Tailwind is fully configured */
-
-/* Remove default Vite styles if they were here */
-#root {
-  /* max-width: 1280px; */ /* Let App.tsx handle max-width if needed */
-  /* margin: 0 auto; */
-  /* padding: 2rem; */
-  /* text-align: center; */ /* Overridden by Tailwind utilities usually */
-  /* Ensure root takes full height if necessary for some layouts */
-  /* min-height: 100vh; */
-  /* display: flex; */ /* If centering content globally */
-  /* flex-direction: column; */
-}
+/* 
+  It's generally best to configure base styles (like body background or font) 
+  via tailwind.config.js or by applying Tailwind classes to the html/body tags 
+  in index.html or App.tsx.
+*/
