@@ -83,9 +83,9 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 ## Phase 5: Testing & Deployment
 
 ### 5.1 Testing (Vitest / React Testing Library)
-- [ ] Set up Vitest configuration if not fully done by default Vite template.
-- [ ] Write unit tests for utility functions in `src/utils/storage.ts`.
-- [ ] Write unit tests for `calculateAverageMood` logic in `App.tsx`.
+- [x] Set up Vitest configuration if not fully done by default Vite template.
+- [x] Write unit tests for utility functions in `src/utils/storage.ts`.
+- [x] Write unit tests for `calculateAverageMood` logic in `App.tsx`.
 - [ ] Write basic integration/component tests for `MoodForm` (e.g., input changes, save callback).
 - [ ] Write basic integration/component tests for `CalendarView` (e.g., date selection).
 
