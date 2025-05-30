@@ -99,7 +99,7 @@ function App() {
         {/* Header - now a blue card with yellow elements */}
         <header className="flex justify-between items-center p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
           <div className="flex items-center">
-            <h1 className="text-4xl font-bold text-yellow-400 dark:text-yellow-300 tracking-tight">My day</h1>
+            <h1 className="text-4xl font-bold text-yellow-400 dark:text-yellow-300 tracking-tight m-0">My day</h1>
             <span className="ml-2 text-2xl">✨</span>
           </div>
           <button

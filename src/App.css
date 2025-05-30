@@ -4,10 +4,10 @@
 /* Custom Calendar Styling */
 .mood-calendar {
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem; /* 12px */
   font-family: inherit;
   width: 100%; /* Ensure calendar takes full width of its container */
-  background-color: #fefce8; /* Light yellow (yellow-50) background for the calendar itself */
+  background-color: #fefce8 !important; /* Light yellow, try important */
 }
 
 .dark .mood-calendar {

@@ -40,40 +40,53 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
     );
   }
 
+  const sortedMoods = entries.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+
   return (
-    <div className="space-y-3">
-      <h3 className="text-lg font-semibold text-sky-50 dark:text-sky-100 mb-2 text-center">
+    <div className="space-y-2">
+      <h3 className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-2 text-center">
         {formatDateForDisplay(selectedDate)}
       </h3>
       <ul className="space-y-3">
-        {entries.map(entry => (
-          <li 
-            key={entry.id} 
-            className="p-3 rounded-lg shadow-sm border-l-4 transition-all duration-200 hover:shadow-md bg-yellow-100 dark:bg-yellow-700"
-            style={{ borderColor: MOOD_COLORS[entry.mood] }}
+        {sortedMoods.map((mood) => (
+          <li
+            key={mood.id}
+            className="relative p-3 sm:p-4 bg-sky-500 dark:bg-sky-600 rounded-lg shadow-md"
           >
-            <div className="flex items-start space-x-2.5">
-              <span className="text-5xl">{MOOD_EMOJIS[entry.mood]}</span>
-              <div className="flex-grow relative">
-                <p className="absolute top-0 right-0 text-xs text-blue-500 dark:text-blue-400 pt-0.5 pr-0.5">
-                  {new Date(entry.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}
-                </p>
-                <p className="font-semibold text-blue-800 dark:text-blue-200 text-lg mr-16">{getMoodText(entry.mood)}</p>
-                {entry.note && <p className="text-sm text-blue-700 dark:text-blue-300 whitespace-pre-wrap break-words mt-1">{entry.note}</p>}
-                {entry.tags && entry.tags.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {entry.tags.map(tag => (
-                      <span 
-                        key={tag} 
-                        className="px-2.5 py-1 text-sm font-medium bg-blue-600 text-yellow-300 dark:bg-blue-700 dark:text-yellow-200 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+            <div className="flex items-start justify-between">
+              <div className="flex items-start space-x-3">
+                <span className="text-5xl">{MOOD_EMOJIS[mood.mood]}</span>
+                <div className="flex-grow">
+                  <p className="text-xl font-semibold text-yellow-400 dark:text-yellow-300">
+                    {getMoodText(mood.mood)}
+                  </p>
+                  {mood.note && (
+                    <p className="text-base text-yellow-300 dark:text-yellow-200 mt-1 italic">
+                      {mood.note}
+                    </p>
+                  )}
+                </div>
               </div>
+              <p className="absolute top-2 right-3 text-sm text-yellow-300 dark:text-yellow-200">
+                Logged: {new Date(mood.createdAt).toLocaleTimeString()}
+              </p>
             </div>
+
+            {mood.tags && mood.tags.length > 0 && (
+              <div className="mt-2 pt-2 border-t border-sky-400 dark:border-sky-600">
+                <p className="text-sm text-yellow-300 dark:text-yellow-200 mb-1">Tags:</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {mood.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 text-sm rounded-full bg-blue-600 text-sky-100 dark:bg-blue-700 dark:text-sky-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </li>
         ))}
       </ul>
