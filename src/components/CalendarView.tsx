@@ -59,21 +59,23 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   };
 
   return (
-    <Calendar
-      className="react-calendar mood-calendar" // Ensure this class is used for styling overrides
-      onClickDay={onDateSelect}
-      tileContent={tileContent}
-      value={selectedDate}
-      activeStartDate={activeStartDate}
-      onActiveStartDateChange={onActiveStartDateChange} // Propagates the full params object
-      formatShortWeekday={formatShortWeekday}
-      showNeighboringMonth={false}
-      prev2Label={null}
-      next2Label={null}
-      // Ensure navigation labels are accessible for styling and testing
-      prevLabel={<span aria-label="Previous month">‹</span>} 
-      nextLabel={<span aria-label="Next month">›</span>}
-    />
+    <div className="flex justify-center">
+      <Calendar
+        className="react-calendar mood-calendar" // Ensure this class is used for styling overrides
+        onClickDay={onDateSelect}
+        tileContent={tileContent}
+        value={selectedDate}
+        activeStartDate={activeStartDate}
+        onActiveStartDateChange={onActiveStartDateChange} // Propagates the full params object
+        formatShortWeekday={formatShortWeekday}
+        showNeighboringMonth={false}
+        prev2Label={null}
+        next2Label={null}
+        // Ensure navigation labels are accessible for styling and testing
+        prevLabel={<span aria-label="Previous month">‹</span>} 
+        nextLabel={<span aria-label="Next month">›</span>}
+      />
+    </div>
   );
 };
 
