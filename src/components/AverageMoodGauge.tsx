@@ -16,7 +16,7 @@ const getMoodText = (moodValue: MoodValue): string => {
 
 const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
   if (averageMood === null) {
-    return <p className="text-center text-sm text-slate-400 dark:text-slate-500 py-4">No mood data for this month.</p>;
+    return <p className="text-center text-sm text-sky-100 dark:text-sky-50 py-4">No mood data for this month.</p>;
   }
 
   // Define the segments for the gauge based on all possible mood values
@@ -79,14 +79,14 @@ const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
         </ResponsiveContainer>
         {/* Needle */}
         <div 
-          className="absolute left-1/2 w-0.5 h-[calc(50%-2px)] bg-slate-700 dark:bg-slate-300 origin-bottom transform -translate-x-1/2 rounded-full"
+          className="absolute left-1/2 w-0.5 h-[calc(50%-2px)] bg-sky-100 dark:bg-sky-50 origin-bottom transform -translate-x-1/2 rounded-full"
           style={{ transform: `rotate(${needleRotation}deg)`, bottom: '2px' }} // Adjusted needle for smaller gauge
         ></div>
       </div>
       {/* Emoji and Text - smaller text, less margin */}
       <div className="text-center"> 
         <span className="text-2xl sm:text-3xl block">{emojiForMood}</span>
-        <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mt-0">
+        <p className="text-xs font-medium text-sky-100 dark:text-sky-50 mt-0">
           {textForMood}
         </p>
       </div>

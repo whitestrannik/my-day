@@ -61,7 +61,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   return (
     <div className="flex justify-center">
       <Calendar
-        className="react-calendar mood-calendar" // Ensure this class is used for styling overrides
+        className="react-calendar mood-calendar bg-yellow-50 dark:bg-stone-800" // Added Tailwind BG class, dark:bg-stone-800 is a dark desaturated yellow-ish color
         onClickDay={onDateSelect}
         tileContent={tileContent}
         value={selectedDate}

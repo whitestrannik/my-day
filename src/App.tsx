@@ -93,29 +93,32 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-6 sm:py-10 px-4 transition-colors duration-300 bg-blue-50 dark:bg-slate-900">
-      {/* Main content container - now matches page background, sections within become cards */}
+    <div className="min-h-screen flex flex-col items-center py-6 sm:py-10 px-4 transition-colors duration-300 bg-slate-800 dark:bg-slate-950">
+      {/* Main content container - sections within become blue cards */}
       <div className="w-full max-w-md space-y-6">
-        {/* Header - styling remains as is, part of the overall page flow */}
-        <header className="flex justify-between items-center px-2 sm:px-0 pt-2 sm:pt-0 pb-4">
-          <h1 className="text-4xl font-bold text-indigo-700 dark:text-indigo-300 tracking-tight">My day</h1>
+        {/* Header - now a blue card with yellow elements */}
+        <header className="flex justify-between items-center p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
+          <div className="flex items-center">
+            <h1 className="text-4xl font-bold text-yellow-400 dark:text-yellow-300 tracking-tight">My day</h1>
+            <span className="ml-2 text-2xl">✨</span>
+          </div>
           <button
             onClick={handleOpenMoodForm}
-            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 px-5 text-sm rounded-lg shadow-sm hover:shadow-md transition-colors duration-150 ease-in-out"
+            className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 dark:text-blue-950 font-semibold py-2.5 px-5 text-lg rounded-lg shadow-sm hover:shadow-md transition-colors duration-150 ease-in-out"
           >
             Add mood
           </button>
         </header>
 
         <main className="space-y-5">
-          {/* Average Mood Section - now a distinct card */}
-          <section className="p-3 sm:p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg">
-            <h2 className="text-base font-medium text-slate-600 dark:text-slate-400 mb-2 text-center">Average mood this month</h2>
+          {/* Average Mood Section - blue card */}
+          <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
+            <h2 className="text-lg font-medium text-sky-100 dark:text-sky-50 mb-2 text-center">Average mood this month</h2>
             <AverageMoodGauge averageMood={averageMonthlyMood} />
           </section>
 
-          {/* Calendar Section - now a distinct card */}
-          <section className="p-3 sm:p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg">
+          {/* Calendar Section - back to blue card, calendar component inside will be yellow */}
+          <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
             <CalendarView 
               allEntries={allEntries}
               onDateSelect={handleDateSelect}
@@ -125,9 +128,9 @@ function App() {
             />
           </section>
 
-          {/* Selected Day Details Section - now a distinct card */}
+          {/* Selected Day Details Section - blue card */}
           {selectedDate && (
-            <section className="p-3 sm:p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg">
+            <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
               <MoodDisplay 
                 selectedDate={selectedDate} 
                 entries={entriesForSelectedDate} 

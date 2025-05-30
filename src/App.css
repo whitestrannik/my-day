@@ -7,6 +7,11 @@
   border-radius: 0.5rem;
   font-family: inherit;
   width: 100%; /* Ensure calendar takes full width of its container */
+  background-color: #fefce8; /* Light yellow (yellow-50) background for the calendar itself */
+}
+
+.dark .mood-calendar {
+  background-color: #422006; /* Example: dark yellow-brown for dark mode calendar bg */
 }
 
 .mood-calendar .react-calendar__navigation {
@@ -18,7 +23,7 @@
 }
 
 .mood-calendar .react-calendar__navigation button {
-  color: #475569; /* slate-600 */
+  color: #1e3a8a; /* Dark blue for text on light yellow bg */
   background: none;
   border: none;
   font-size: 1rem; /* text-base */
@@ -29,31 +34,31 @@
 }
 
 .dark .mood-calendar .react-calendar__navigation button {
-  color: #cbd5e1; /* slate-300 */
+  color: #93c5fd; /* Lighter blue for dark yellow bg */
 }
 
 .mood-calendar .react-calendar__navigation button:hover,
 .mood-calendar .react-calendar__navigation button:focus {
-  background-color: #f1f5f9; /* slate-100 */
+  background-color: #fef9c3; /* yellow-200 for hover on yellow-100 bg */
 }
 
 .dark .mood-calendar .react-calendar__navigation button:hover,
 .dark .mood-calendar .react-calendar__navigation button:focus {
-  background-color: #334155; /* slate-700 */
+  background-color: #713f12; /* Darker yellow-orange for hover on dark yellow */
 }
 
 /* Month and Year display */
 .mood-calendar .react-calendar__navigation__label {
   font-weight: 700; /* bold */
   font-size: 1.125rem; /* text-lg */
-  color: #1e293b; /* slate-800 */
+  color: #1e3a8a; /* Dark blue for text on light yellow bg */
   flex-grow: 0 !important; /* Override default flex-grow if any */
   pointer-events: none; /* Not clickable */
   padding: 0.5rem 0.5rem;
 }
 
 .dark .mood-calendar .react-calendar__navigation__label {
-  color: #e2e8f0; /* slate-200 */
+  color: #fde68a; /* Light yellow for dark yellow bg */
 }
 
 /* Weekday labels */
@@ -62,11 +67,11 @@
   text-align: center;
   font-weight: 600; /* semibold */
   font-size: 0.75rem; /* text-xs */
-  color: #64748b; /* slate-500 */
+  color: #1c3d5a; /* Dark slate-blue for text on light yellow bg */
 }
 
 .dark .mood-calendar .react-calendar__month-view__weekdays {
-  color: #94a3b8; /* slate-400 */
+  color: #fef3c7; /* Pale yellow for dark yellow bg */
 }
 
 .mood-calendar .react-calendar__month-view__weekdays abbr {
@@ -88,21 +93,21 @@
   line-height: 1;
   background: none;
   border: none;
-  font-size: 0.875rem;
-  color: #334155; /* slate-700 */
+  font-size: 1rem; /* Increased from 0.875rem (text-base) */
+  color: #1e3a8a; /* Dark blue for text on light yellow bg */
   position: relative; /* For absolute positioning of mood dot if needed, though flex should work */
 }
 
 .dark .mood-calendar .react-calendar__tile {
-  color: #cbd5e1; /* slate-300 */
+  color: #fde047; /* Bright yellow for text on dark yellow bg */
 }
 
 .mood-calendar .react-calendar__tile:hover {
-  background-color: #f1f5f9; /* slate-100 */
+  background-color: #fef9c3; /* yellow-200 for hover on yellow-100 bg */
 }
 
 .dark .mood-calendar .react-calendar__tile:hover {
-  background-color: #3e4c5e; /* Slightly lighter than slate-700 for hover */
+  background-color: #713f12; /* Darker yellow-orange for hover on dark yellow */
 }
 
 .mood-calendar .react-calendar__tile abbr { /* The day number */
@@ -111,8 +116,8 @@
 
 /* Mood dot - making it smaller and ensuring it's below the number */
 .mood-dot {
-  width: 5px; /* Smaller dot */
-  height: 5px; /* Smaller dot */
+  width: 14px; /* Increased further */
+  height: 14px; /* Increased further */
   border-radius: 50%;
   margin-top: 3px; /* Space between number and dot */
   flex-shrink: 0;
