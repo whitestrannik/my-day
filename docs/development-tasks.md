@@ -5,7 +5,7 @@ This list tracks the implementation progress of the My-Day mood and thoughts tra
 ## Phase 1: Core Structure & Setup (Mostly Done)
 
 - [x] Initialize project with Vite + React + TypeScript
-- [x] Install TailwindCSS and configure with PostCSS
+- [x] Install TailwindCSS and configure with PostCSS. **Note: Successfully reconfigured to use Tailwind CSS v4 with the `@tailwindcss/vite` plugin, resolving previous v3-style setup issues.**
 - [x] Configure ESLint, Prettier, and TypeScript strict mode
 - [x] Add basic file/folder structure (`components`, `hooks`, `utils`, `types`)
 - [x] Define core types (`MoodValue`, `MoodEntry`, `Tag`, etc.) in `src/types/index.ts`

@@ -47,6 +47,8 @@ Build Tooling	Vite
 Deployment	GitHub Pages
 CI/CD (optional)	GitHub Actions for test & lint checks
 
+**Development Note (June 2024):** Initial Tailwind CSS setup encountered significant issues due to attempts to use a v3 configuration style. The project was successfully migrated to Tailwind CSS v4 using the `@tailwindcss/vite` plugin, which resolved the problems and simplified the setup considerably.
+
 🧩 Suggested Folder Structure
 /my-day/
 ├── public/
