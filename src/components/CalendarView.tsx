@@ -47,9 +47,10 @@ const CalendarView: React.FC<CalendarViewProps> = ({
           return (
             <div className="flex justify-center items-center h-full pt-1">
               <span 
-                className="mood-dot w-1.5 h-1.5 rounded-full"
+                className="mood-dot w-2 h-2 rounded-full"
                 style={{ backgroundColor: MOOD_COLORS[avgMood] }}
-              ></span>
+              >
+              </span>
             </div>
           );
         }
