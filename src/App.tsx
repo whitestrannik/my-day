@@ -113,7 +113,6 @@ function App() {
         <main className="space-y-5">
           {/* Average Mood Section - blue card */}
           <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
-            <h2 className="text-lg font-medium text-sky-100 dark:text-sky-50 mb-2 text-center">Average mood this month</h2>
             <AverageMoodGauge averageMood={averageMonthlyMood} />
           </section>
 
