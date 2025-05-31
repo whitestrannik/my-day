@@ -2,8 +2,8 @@ import React from 'react';
 import type { MoodValue } from '../types';
 import { MOOD_COLORS, MOOD_EMOJIS, MOOD_VALUES } from '../types';
 
-interface AverageMoodGaugeProps {
-  averageMood: MoodValue | null;
+interface DailyAverageMoodProps {
+  dailyAverageMood: MoodValue | null;
 }
 
 const getMoodText = (moodValue: MoodValue): string => {
@@ -17,16 +17,16 @@ const getMoodText = (moodValue: MoodValue): string => {
     .replace(/\b\w/g, (l) => l.toUpperCase());
 };
 
-const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
-  if (averageMood === null) {
+const DailyAverageMood: React.FC<DailyAverageMoodProps> = ({ dailyAverageMood }) => {
+  if (dailyAverageMood === null) {
     return (
       <p className="text-center text-sm text-yellow-400 dark:text-yellow-300 py-4">
-        No mood data for this month.
+        No mood data for this day.
       </p>
     );
   }
 
-  const moodValue = averageMood;
+  const moodValue = dailyAverageMood;
   const emojiForMood = MOOD_EMOJIS[moodValue];
   const textForMood = getMoodText(moodValue);
 
@@ -46,7 +46,7 @@ const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
 
       {/* Mood Text and Score */}
       <p className="text-lg font-medium text-yellow-400 dark:text-yellow-300">
-        Average: {textForMood} ({moodValue})
+        {textForMood} ({moodValue})
       </p>
 
       {/* Spacer to push mood bar to the right, if desired, or manage spacing with justify-between on parent */}
@@ -69,4 +69,4 @@ const AverageMoodGauge: React.FC<AverageMoodGaugeProps> = ({ averageMood }) => {
   );
 };
 
-export default AverageMoodGauge; 
+export default DailyAverageMood; 

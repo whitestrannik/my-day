@@ -2,6 +2,8 @@
 
 This list tracks the implementation progress of the My-Day mood and thoughts tracker.
 
+**Development Environment Note:** All development for this project is currently being done on a Windows machine using PowerShell as the command line interface. Care should be taken to ensure commands are compatible and that console output is carefully verified for successful execution of operations like Git commands.
+
 ## Phase 1: Core Structure & Setup (Mostly Done)
 
 - [x] Initialize project with Vite + React + TypeScript

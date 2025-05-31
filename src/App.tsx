@@ -3,7 +3,7 @@ import './App.css'
 import CalendarView from './components/CalendarView'
 import MoodForm from './components/MoodForm'
 import MoodDisplay from './components/MoodDisplay'
-import AverageMoodGauge from './components/AverageMoodGauge'
+import DailyAverageMood from './components/DailyAverageMood'
 import { getEntriesForDate as getEntriesForDateFromStorage, saveEntry as saveEntryToStorage, getAllEntriesAsList as getAllEntriesListFromStorage, generateId, getStoredEntries } from './utils/storage'
 import type { MoodEntry, MoodValue, DayEntries } from './types'
 import { MOOD_VALUES } from './types' // For calculating average
@@ -16,7 +16,7 @@ function App() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [entriesForSelectedDate, setEntriesForSelectedDate] = useState<MoodEntry[]>([])
   const [allEntries, setAllEntries] = useState<DayEntries>(() => getStoredEntries())
-  const [averageMonthlyMood, setAverageMonthlyMood] = useState<MoodValue | null>(null)
+  const [averageMoodForSelectedDate, setAverageMoodForSelectedDate] = useState<MoodValue | null>(null)
   const [activeStartDate, setActiveStartDate] = useState(new Date())
 
   useEffect(() => {
@@ -36,19 +36,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const dateToLoad = selectedDate || new Date().toISOString().split('T')[0];
-    setEntriesForSelectedDate(getEntriesForDateFromStorage(dateToLoad));
-  }, [selectedDate, allEntries]);
-
-  useEffect(() => {
-    const entriesInCurrentMonthView = getAllEntriesListFromStorage()
-      .filter(entry => {
-        const entryDate = new Date(entry.date + "T00:00:00");
-        return entryDate.getFullYear() === activeStartDate.getFullYear() &&
-               entryDate.getMonth() === activeStartDate.getMonth();
-      });
-    setAverageMonthlyMood(calculateAverageMoodValue(entriesInCurrentMonthView));
-  }, [allEntries, activeStartDate, calculateAverageMoodValue]);
+    if (selectedDate) {
+      const entries = getEntriesForDateFromStorage(selectedDate) || [];
+      setEntriesForSelectedDate(entries);
+      setAverageMoodForSelectedDate(calculateAverageMoodValue(entries));
+    } else {
+      setEntriesForSelectedDate([]);
+      setAverageMoodForSelectedDate(null);
+    }
+  }, [selectedDate, allEntries, calculateAverageMoodValue]);
 
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date.toISOString().split('T')[0])
@@ -111,10 +107,15 @@ function App() {
         </header>
 
         <main className="space-y-5">
-          {/* Average Mood Section - blue card */}
-          <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
-            <AverageMoodGauge averageMood={averageMonthlyMood} />
-          </section>
+          {/* Daily Average Mood Section - only if a date is selected and has entries */}
+          {selectedDate && entriesForSelectedDate.length > 0 && (
+            <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
+              <h2 className="text-lg font-medium text-yellow-400 dark:text-yellow-300 mb-2 text-center">
+                Average mood for this day
+              </h2>
+              <DailyAverageMood dailyAverageMood={averageMoodForSelectedDate} />
+            </section>
+          )}
 
           {/* Calendar Section - back to blue card, calendar component inside will be yellow */}
           <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
