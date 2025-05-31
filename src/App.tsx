@@ -4,10 +4,9 @@ import CalendarView from './components/CalendarView'
 import MoodForm from './components/MoodForm'
 import MoodDisplay from './components/MoodDisplay'
 import DailyAverageMood from './components/DailyAverageMood'
-import { getEntriesForDate as getEntriesForDateFromStorage, saveEntry as saveEntryToStorage, getAllEntriesAsList as getAllEntriesListFromStorage, generateId, getStoredEntries } from './utils/storage'
+import { getEntriesForDate as getEntriesForDateFromStorage, saveEntry as saveEntryToStorage, generateId, getStoredEntries } from './utils/storage'
 import type { MoodEntry, MoodValue, DayEntries } from './types'
 import { MOOD_VALUES } from './types' // For calculating average
-import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 
 // Helper to get today's date in YYYY-MM-DD format

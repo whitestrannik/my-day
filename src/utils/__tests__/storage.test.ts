@@ -6,10 +6,8 @@ import {
   getAllEntriesAsList, 
   generateId 
 } from '../storage';
-import type { MoodEntry, DayEntries } from '../../types';
+import type { MoodEntry } from '../../types';
 import { MOOD_VALUES } from '../../types';
-
-const STORAGE_KEY = 'myDayMoodEntries';
 
 describe('Storage Utilities', () => {
   beforeEach(() => {

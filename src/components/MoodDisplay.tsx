@@ -1,18 +1,11 @@
 import React from 'react';
-import type { MoodEntry, MoodValue } from '../types';
-import { MOOD_EMOJIS, MOOD_VALUES } from '../types'; // MOOD_COLORS no longer needed here
+import type { MoodEntry } from '../types';
+import { MOOD_EMOJIS } from '../types'; // Removed MOOD_VALUES, MOOD_COLORS no longer needed here
 
 interface MoodDisplayProps {
   selectedDate: string; // YYYY-MM-DD
   entries: MoodEntry[];
 }
-
-// Helper to get mood text (no longer used in render, but could be for tooltips or future features)
-const getMoodText = (moodValue: MoodValue): string => {
-  const moodKey = Object.keys(MOOD_VALUES).find(key => MOOD_VALUES[key as keyof typeof MOOD_VALUES] === moodValue);
-  if (!moodKey) return 'Unknown';
-  return moodKey.replace('_', ' ').toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-};
 
 const formatDateForDisplay = (dateString: string): string => {
   const date = new Date(dateString + 'T00:00:00'); // Ensure correct date parsing

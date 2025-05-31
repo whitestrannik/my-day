@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+// import React from 'react'; // Removed as per new JSX transform
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CalendarView from '../CalendarView';
+import type { DayEntries } from '../../types';
 import { MOOD_VALUES, MOOD_COLORS } from '../../types';
-import type { DayEntries, MoodEntry } from '../../types';
 
 // Mock props
 const mockOnDateSelect = vi.fn();

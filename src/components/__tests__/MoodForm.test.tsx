@@ -1,9 +1,9 @@
+// import React from 'react'; // Removed as per new JSX transform
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MoodForm from '../MoodForm';
 import { MOOD_VALUES, MOOD_EMOJIS, TAGS } from '../../types';
-import type { MoodValue, Tag } from '../../types';
 
 // Mock props
 const mockOnClose = vi.fn();
