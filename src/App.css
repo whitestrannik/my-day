@@ -69,11 +69,11 @@
   text-align: center;
   font-weight: 600; /* semibold */
   font-size: 0.75rem; /* text-xs */
-  color: #e0f2fe; /* sky-100 */
+  color: #facc15 !important; /* yellow-400 */
 }
 
 .dark .mood-calendar .react-calendar__month-view__weekdays {
-  color: #bae6fd; /* sky-200 */
+  color: #fde047 !important; /* yellow-300 */
 }
 
 .mood-calendar .react-calendar__month-view__weekdays abbr {
@@ -95,23 +95,23 @@
   line-height: 1;
   background: none;
   border: none;
-  font-size: 1rem; /* Increased from 0.875rem (text-base) */
-  color: #f0f9ff; /* sky-50 */
+  font-size: 1rem;
+  color: #facc15 !important; /* yellow-400 for day numbers */
   position: relative; /* For absolute positioning of mood dot if needed, though flex should work */
 }
 
 .dark .mood-calendar .react-calendar__tile {
-  color: #e0f2fe; /* sky-100 */
+  color: #fde047 !important; /* yellow-300 for day numbers */
 }
 
 .mood-calendar .react-calendar__tile:hover {
-  background-color: #0369a1; /* sky-700 for hover on sky-600 bg */
-  color: #fef08a; /* yellow-200 for text on hover */
+  background-color: #0c4a6e !important; /* sky-900 for hover background */
+  color: #f0f9ff !important; /* sky-50 for day numbers on hover */
 }
 
 .dark .mood-calendar .react-calendar__tile:hover {
-  background-color: #075985; /* sky-800 for hover on sky-700 bg */
-  color: #fef08a; /* yellow-200 for text on hover */
+  background-color: #082f49 !important; /* sky-950 for hover background */
+  color: #f0f9ff !important; /* sky-50 for day numbers on hover */
 }
 
 .mood-calendar .react-calendar__tile abbr { /* The day number */
@@ -136,6 +136,10 @@
 .mood-calendar .react-calendar__tile--active abbr {
   color: #0c4a6e !important; /* sky-900 for number */
 }
+.mood-calendar .react-calendar__tile--active:hover {
+  background: #eab308 !important; /* yellow-500 for active hover background */
+  color: #0c4a6e !important; /* sky-900 for text on active hover */
+}
 
 /* Ensure mood dot on active tile is also visible or styled if needed */
 .mood-calendar .react-calendar__tile--active .mood-dot {
@@ -148,6 +152,10 @@
 }
 .dark .mood-calendar .react-calendar__tile--active abbr {
   color: #075985 !important; /* sky-800 for number */
+}
+.dark .mood-calendar .react-calendar__tile--active:hover {
+  background: #facc15 !important; /* yellow-400 for active hover background */
+  color: #075985 !important; /* sky-800 for text on active hover */
 }
 
 .dark .mood-calendar .react-calendar__tile--active .mood-dot {
@@ -189,3 +197,17 @@
 /* .elevation-1 {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 } */
+
+/* Animation for header emoji */
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2s infinite ease-in-out;
+}

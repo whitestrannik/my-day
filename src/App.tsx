@@ -10,10 +10,13 @@ import { MOOD_VALUES } from './types' // For calculating average
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 
+// Helper to get today's date in YYYY-MM-DD format
+const getTodayDateString = () => new Date().toISOString().split('T')[0];
+
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
   const [isMoodFormOpen, setIsMoodFormOpen] = useState(false)
-  const [selectedDate, setSelectedDate] = useState<string | null>(null)
+  const [selectedDate, setSelectedDate] = useState<string | null>(() => getTodayDateString()); // Initialize with today's date
   const [entriesForSelectedDate, setEntriesForSelectedDate] = useState<MoodEntry[]>([])
   const [allEntries, setAllEntries] = useState<DayEntries>(() => getStoredEntries())
   const [averageMoodForSelectedDate, setAverageMoodForSelectedDate] = useState<MoodValue | null>(null)
@@ -96,7 +99,7 @@ function App() {
         <header className="flex justify-between items-center p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
           <div className="flex items-center">
             <h1 className="text-4xl font-bold text-yellow-400 dark:text-yellow-300 tracking-tight m-0">My day</h1>
-            <span className="ml-2 text-2xl">✨</span>
+            <span className="ml-2 text-2xl animate-gentle-bounce">✨</span>
           </div>
           <button
             onClick={handleOpenMoodForm}
@@ -107,8 +110,8 @@ function App() {
         </header>
 
         <main className="space-y-5">
-          {/* Daily Average Mood Section - only if a date is selected and has entries */}
-          {selectedDate && entriesForSelectedDate.length > 0 && (
+          {/* Daily Average Mood Section - show if a date is selected */}
+          {selectedDate && (
             <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
               <h2 className="text-lg font-medium text-yellow-400 dark:text-yellow-300 mb-2 text-center">
                 Average mood for this day

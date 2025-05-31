@@ -27,14 +27,14 @@ const formatDateForDisplay = (dateString: string): string => {
 
 const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
   if (!selectedDate) {
-    return <p className="text-center text-sky-100 dark:text-sky-50 py-4">Select a day to see your entries.</p>;
+    return <p className="text-center text-yellow-400 dark:text-yellow-300 py-4">Select a day to see your entries.</p>;
   }
 
   if (entries.length === 0) {
     return (
       <div className="text-center py-4">
-        <p className="font-semibold text-sky-50 dark:text-sky-100 mb-1">{formatDateForDisplay(selectedDate)}</p>
-        <p className="text-sky-100 dark:text-sky-200">No mood logged for this day.</p>
+        <p className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-1">{formatDateForDisplay(selectedDate)}</p>
+        <p className="text-lg font-medium text-yellow-400 dark:text-yellow-300">No mood logged for this day.</p>
       </div>
     );
   }
@@ -60,7 +60,7 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
             <div className="flex-grow min-w-0"> {/* min-w-0 for proper behavior with flexbox */}
               {mood.note && (
                 // Removed truncate class to allow wrapping, and removed JS truncate call
-                <p className="text-sm text-sky-100 dark:text-sky-50 mb-1 break-words">
+                <p className="text-sm text-yellow-400 dark:text-yellow-300 mb-1 break-words">
                   {mood.note}
                 </p>
               )}
@@ -69,7 +69,8 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
                   {mood.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 text-xs rounded-full bg-sky-400 dark:bg-sky-500 text-sky-50 dark:text-sky-100"
+                      // Tag BG is sky-400/500. Text will be yellow.
+                      className="px-2 py-0.5 text-xs rounded-full bg-sky-400 dark:bg-sky-500 text-yellow-400 dark:text-yellow-300"
                     >
                       {tag}
                     </span>
@@ -83,7 +84,7 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
             </div>
 
             {/* Logged Time - Small, on the right */}
-            <p className="text-xs text-sky-200 dark:text-sky-300 whitespace-nowrap pt-1"> {/* Added small top padding for better visual alignment */}
+            <p className="text-xs text-yellow-400 dark:text-yellow-300 whitespace-nowrap pt-1"> 
               {new Date(mood.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </p>
           </li>

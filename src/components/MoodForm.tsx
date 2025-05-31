@@ -88,19 +88,19 @@ const MoodForm: React.FC<MoodFormProps> = ({
           <button 
             type="button" 
             onClick={onClose} 
-            className="text-sky-200 hover:text-sky-100 dark:text-sky-300 dark:hover:text-sky-100 text-3xl font-light"
+            className="text-yellow-300 hover:text-yellow-200 dark:text-yellow-400 dark:hover:text-yellow-200 text-3xl font-light"
           >
             &times;
           </button>
         </div>
 
         {/* Date for entry */}
-        <p className="text-sm text-sky-200 dark:text-sky-300 mb-4">
-          Logging for: <span className="font-semibold text-sky-100 dark:text-sky-50">{new Date(entryDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <p className="text-sm text-yellow-400 dark:text-yellow-300 mb-4">
+          Logging for: <span className="font-semibold text-yellow-300 dark:text-yellow-200">{new Date(entryDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </p>
 
         <div className="mb-6">
-          <label className="block text-sky-100 dark:text-sky-50 mb-2 font-medium">How are you feeling?</label>
+          <label className="block text-yellow-400 dark:text-yellow-300 mb-2 font-medium">How are you feeling?</label>
           <div className="flex justify-around items-center p-3 bg-sky-600 dark:bg-sky-700 rounded-lg">
             {moodOptions.map(moodValue => (
               <button
@@ -118,7 +118,7 @@ const MoodForm: React.FC<MoodFormProps> = ({
         </div>
 
         <div className="mb-6">
-          <label className="block text-sky-100 dark:text-sky-50 mb-2 font-medium">What's on your mind? (Optional)</label>
+          <label className="block text-yellow-400 dark:text-yellow-300 mb-2 font-medium">What's on your mind? (Optional)</label>
           <div className="flex flex-wrap gap-2">
             {TAGS.map(tag => (
               <button
@@ -128,7 +128,7 @@ const MoodForm: React.FC<MoodFormProps> = ({
                 className={`px-3 py-1.5 text-sm rounded-full transition-colors duration-150 ease-in-out font-medium 
                             ${selectedTags.includes(tag) 
                                 ? 'bg-yellow-400 text-sky-800 ring-2 ring-yellow-500' 
-                                : 'bg-sky-500 hover:bg-sky-400 text-sky-50 dark:bg-sky-600 dark:hover:bg-sky-500 dark:text-sky-100'}`}
+                                : 'bg-sky-500 hover:bg-sky-400 text-yellow-300 dark:bg-sky-600 dark:hover:bg-sky-500 dark:text-yellow-200'}`}
               >
                 {tag}
               </button>
@@ -137,7 +137,7 @@ const MoodForm: React.FC<MoodFormProps> = ({
         </div>
 
         <div className="mb-6">
-          <label htmlFor="note" className="block text-sky-100 dark:text-sky-50 mb-2 font-medium">Add a note (Optional)</label>
+          <label htmlFor="note" className="block text-yellow-400 dark:text-yellow-300 mb-2 font-medium">Add a note (Optional)</label>
           <textarea
             id="note"
             value={note}
@@ -145,9 +145,9 @@ const MoodForm: React.FC<MoodFormProps> = ({
             placeholder="Write a short note..."
             rows={3}
             maxLength={120}
-            className="w-full p-3 border border-sky-500 dark:border-sky-600 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none bg-sky-600 dark:bg-sky-700 text-sky-50 dark:text-sky-50 placeholder-sky-300 dark:placeholder-sky-400 resize-none"
+            className="w-full p-3 border border-sky-500 dark:border-sky-600 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none bg-sky-600 dark:bg-sky-700 text-yellow-300 dark:text-yellow-200 placeholder-yellow-500 dark:placeholder-yellow-600 resize-none"
           ></textarea>
-          <p className="text-xs text-right text-sky-300 dark:text-sky-400 mt-1">{note.length}/120</p>
+          <p className="text-xs text-right text-yellow-400 dark:text-yellow-300 mt-1">{note.length}/120</p>
         </div>
 
         <button 
