@@ -32,9 +32,9 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
 
   if (entries.length === 0) {
     return (
-      <div className="text-center py-4">
-        <p className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-1">{formatDateForDisplay(selectedDate)}</p>
-        <p className="text-lg font-medium text-yellow-400 dark:text-yellow-300">No mood logged for this day.</p>
+      <div className="text-center">
+        <p className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-2">{formatDateForDisplay(selectedDate)}</p>
+        <p className="text-lg font-medium text-yellow-400 dark:text-yellow-300 pt-1 pb-3">No mood logged for this day.</p>
       </div>
     );
   }
@@ -43,7 +43,7 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
 
   return (
     <div className="space-y-2">
-      <h3 className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-3 text-center">
+      <h3 className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-2 text-center">
         {formatDateForDisplay(selectedDate)}
       </h3>
       <ul className="space-y-2.5"> {/* Reduced space between list items */}
@@ -59,8 +59,7 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
             {/* Center Content: Note (if exists) and Tags */}
             <div className="flex-grow min-w-0"> {/* min-w-0 for proper behavior with flexbox */}
               {mood.note && (
-                // Removed truncate class to allow wrapping, and removed JS truncate call
-                <p className="text-sm text-yellow-400 dark:text-yellow-300 mb-1 break-words">
+                <p className="text-base text-yellow-400 dark:text-yellow-300 mb-1 break-words">
                   {mood.note}
                 </p>
               )}
@@ -69,8 +68,7 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
                   {mood.tags.map((tag) => (
                     <span
                       key={tag}
-                      // Tag BG is sky-400/500. Text will be yellow.
-                      className="px-2 py-0.5 text-xs rounded-full bg-sky-400 dark:bg-sky-500 text-yellow-400 dark:text-yellow-300"
+                      className="px-2 py-0.5 text-sm rounded-full bg-sky-400 dark:bg-sky-500 text-yellow-400 dark:text-yellow-300"
                     >
                       {tag}
                     </span>
@@ -84,7 +82,7 @@ const MoodDisplay: React.FC<MoodDisplayProps> = ({ selectedDate, entries }) => {
             </div>
 
             {/* Logged Time - Small, on the right */}
-            <p className="text-xs text-yellow-400 dark:text-yellow-300 whitespace-nowrap pt-1"> 
+            <p className="text-sm text-yellow-400 dark:text-yellow-300 whitespace-nowrap pt-1">
               {new Date(mood.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </p>
           </li>

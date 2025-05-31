@@ -113,7 +113,7 @@ function App() {
           {/* Daily Average Mood Section - show if a date is selected */}
           {selectedDate && (
             <section className="p-3 sm:p-4 bg-sky-700 dark:bg-sky-800 rounded-2xl shadow-lg">
-              <h2 className="text-lg font-medium text-yellow-400 dark:text-yellow-300 mb-2 text-center">
+              <h2 className="text-xl font-semibold text-yellow-400 dark:text-yellow-300 mb-2 text-center">
                 Average mood for this day
               </h2>
               <DailyAverageMood dailyAverageMood={averageMoodForSelectedDate} />

@@ -20,7 +20,7 @@ const getMoodText = (moodValue: MoodValue): string => {
 const DailyAverageMood: React.FC<DailyAverageMoodProps> = ({ dailyAverageMood }) => {
   if (dailyAverageMood === null) {
     return (
-      <p className="text-center text-sm text-yellow-400 dark:text-yellow-300 py-4">
+      <p className="text-center text-lg font-medium text-yellow-400 dark:text-yellow-300 pt-1 pb-3">
         No mood data for this day.
       </p>
     );
