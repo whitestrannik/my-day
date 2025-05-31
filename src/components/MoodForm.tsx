@@ -64,12 +64,12 @@ const MoodForm: React.FC<MoodFormProps> = ({
 
   // Modal vs Page rendering
   const containerClasses = isMobile
-    ? 'fixed inset-0 bg-sky-50 dark:bg-slate-900 p-6 pt-12 flex flex-col z-50' // Full page on mobile
-    : 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50'; // Modal overlay on desktop
+    ? 'fixed inset-0 bg-sky-700 dark:bg-sky-800 p-6 pt-12 flex flex-col z-50' // Full page on mobile - Updated BG
+    : 'fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-70 flex items-center justify-center p-4 z-50'; // Modal overlay on desktop - slightly darker overlay
   
   const formClasses = isMobile
-    ? 'w-full h-full flex flex-col'
-    : 'bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl max-w-md w-full';
+    ? 'w-full h-full flex flex-col overflow-y-auto' // Added overflow-y-auto for mobile
+    : 'bg-sky-700 dark:bg-sky-800 p-6 rounded-2xl shadow-xl max-w-md w-full'; // Desktop form - Updated BG & rounded-2xl
 
   if (!isOpen && !isMobile) return null; // Desktop modal is hidden
   if (!isOpen && isMobile) return null; // If mobile is also controlled by isOpen and not a route
@@ -82,34 +82,33 @@ const MoodForm: React.FC<MoodFormProps> = ({
         onClick={!isMobile ? (e) => e.stopPropagation() : undefined} // Prevent closing modal by clicking form itself
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-semibold text-gray-700 dark:text-sky-100">
-            {isMobile ? 'Add mood' : 'How was your day?'}
+          <h2 className="text-2xl font-semibold text-yellow-400 dark:text-yellow-300">
+            {isMobile ? 'Add new mood' : 'How was your day?'} {/* Updated mobile title slightly */}
           </h2>
           <button 
             type="button" 
             onClick={onClose} 
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl"
+            className="text-sky-200 hover:text-sky-100 dark:text-sky-300 dark:hover:text-sky-100 text-3xl font-light"
           >
             &times;
           </button>
         </div>
 
-        {/* Date for entry - could be a date picker if we want to log for other days from here */}
-        {/* For now, it defaults to selectedDateForEntry or today */}
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-          Logging for: <span className="font-semibold">{new Date(entryDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        {/* Date for entry */}
+        <p className="text-sm text-sky-200 dark:text-sky-300 mb-4">
+          Logging for: <span className="font-semibold text-sky-100 dark:text-sky-50">{new Date(entryDate + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </p>
 
         <div className="mb-6">
-          <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">How are you feeling?</label>
-          <div className="flex justify-around items-center p-2 bg-slate-100 dark:bg-slate-700 rounded-lg">
+          <label className="block text-sky-100 dark:text-sky-50 mb-2 font-medium">How are you feeling?</label>
+          <div className="flex justify-around items-center p-3 bg-sky-600 dark:bg-sky-700 rounded-lg">
             {moodOptions.map(moodValue => (
               <button
                 key={moodValue}
                 type="button"
                 onClick={() => setSelectedMood(moodValue)}
                 className={`p-2 rounded-lg text-3xl transition-transform duration-150 ease-in-out hover:scale-125 
-                            ${selectedMood === moodValue ? 'transform scale-125 ring-2 ring-sky-500' : ''}`}
+                            ${selectedMood === moodValue ? 'transform scale-125 ring-2 ring-yellow-400 dark:ring-yellow-300' : 'opacity-70 hover:opacity-100'}`}
                 title={Object.keys(MOOD_VALUES).find(key => MOOD_VALUES[key as keyof typeof MOOD_VALUES] === moodValue)?.replace('_',' ')}
               >
                 {MOOD_EMOJIS[moodValue]}
@@ -119,17 +118,17 @@ const MoodForm: React.FC<MoodFormProps> = ({
         </div>
 
         <div className="mb-6">
-          <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">What's on your mind? (Optional)</label>
+          <label className="block text-sky-100 dark:text-sky-50 mb-2 font-medium">What's on your mind? (Optional)</label>
           <div className="flex flex-wrap gap-2">
             {TAGS.map(tag => (
               <button
                 key={tag}
                 type="button"
                 onClick={() => handleTagToggle(tag)}
-                className={`px-3 py-1.5 text-sm rounded-full transition-colors duration-150 ease-in-out 
+                className={`px-3 py-1.5 text-sm rounded-full transition-colors duration-150 ease-in-out font-medium 
                             ${selectedTags.includes(tag) 
-                                ? 'bg-sky-500 text-white' 
-                                : 'bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 text-slate-700 dark:text-slate-200'}`}
+                                ? 'bg-yellow-400 text-sky-800 ring-2 ring-yellow-500' 
+                                : 'bg-sky-500 hover:bg-sky-400 text-sky-50 dark:bg-sky-600 dark:hover:bg-sky-500 dark:text-sky-100'}`}
               >
                 {tag}
               </button>
@@ -138,7 +137,7 @@ const MoodForm: React.FC<MoodFormProps> = ({
         </div>
 
         <div className="mb-6">
-          <label htmlFor="note" className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">Add a note (Optional)</label>
+          <label htmlFor="note" className="block text-sky-100 dark:text-sky-50 mb-2 font-medium">Add a note (Optional)</label>
           <textarea
             id="note"
             value={note}
@@ -146,14 +145,14 @@ const MoodForm: React.FC<MoodFormProps> = ({
             placeholder="Write a short note..."
             rows={3}
             maxLength={120}
-            className="w-full p-2 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none bg-white dark:bg-slate-700 dark:text-slate-100 resize-none"
+            className="w-full p-3 border border-sky-500 dark:border-sky-600 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none bg-sky-600 dark:bg-sky-700 text-sky-50 dark:text-sky-50 placeholder-sky-300 dark:placeholder-sky-400 resize-none"
           ></textarea>
-          <p className="text-xs text-right text-gray-500 dark:text-gray-400 mt-1">{note.length}/120</p>
+          <p className="text-xs text-right text-sky-300 dark:text-sky-400 mt-1">{note.length}/120</p>
         </div>
 
         <button 
           type="submit"
-          className="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out disabled:opacity-50"
+          className="w-full bg-yellow-400 hover:bg-yellow-500 text-sky-800 font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-in-out disabled:opacity-60 disabled:hover:bg-yellow-400"
           disabled={!selectedMood}
         >
           Save Entry
